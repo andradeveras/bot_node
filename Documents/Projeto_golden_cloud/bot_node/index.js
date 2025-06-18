@@ -97,7 +97,17 @@ const intents = {
   }
 };
 
+const axios = require('axios');
 
+async function getUsuarioSelecionado() {
+  try {
+    const res = await axios.get('http://localhost:3000/api/selected_user');
+    return res.data.username;
+  } catch (error) {
+    console.error('Erro ao buscar usuário selecionado:', error.message);
+    return null;
+  }
+}
 // Função para detectar intenção baseada em keywords
 function detectIntent(message) {
   const lower = message.toLowerCase();
@@ -110,16 +120,20 @@ function detectIntent(message) {
   return null;
 }
 
-app.post('/process-message', (req, res) => {
+app.post('/process-message', async (req, res) => {
   const { message } = req.body;
 
   const reply = detectIntent(message);
+  const username = await getUsuarioSelecionado(); // 🔹 busca do Rails
+
+  if (!username) {
+    return res.json({ reply: "Nenhum usuário selecionado no momento." });
+  }
 
   if (reply) {
-    return res.json({ reply });
+    return res.json({ reply: `@${username} ${reply}` });
   } else {
-    // Caso não entenda, encaminha para atendente humano (simulação)
-    return res.json({ reply: "Não entendi sua pergunta. Vou encaminhar para um atendente. Por favor, aguarde..." });
+    return res.json({ reply: `@${username} não entendi sua pergunta. Vou encaminhar para um atendente.` });
   }
 });
 
