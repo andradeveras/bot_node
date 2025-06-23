@@ -9,10 +9,8 @@ Este repositório contém um microserviço (API) desenvolvido em Node.js para o 
 - [Instalação](#instalação)
 - [Configuração](#configuração)
 - [Execução](#execução)
-- [Endpoints da API](#endpoints-da-api)
-- [Testes](#testes)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
+
+
 
 ## Visão Geral
 
@@ -22,7 +20,7 @@ Este microserviço expõe uma API RESTful para [descrever funcionalidades princi
 
 - Node.js >= 18.x
 - npm >= 9.x
-- [Outros requisitos, ex: banco de dados, Redis, etc.]
+
 
 ## Instalação
 
@@ -58,23 +56,7 @@ Para rodar em produção:
 npm start
 ```
 
-## Endpoints da API
-
-| Método | Rota           | Descrição                        |
-|--------|----------------|----------------------------------|
-| GET    | /health        | Verifica o status do serviço     |
-| POST   | /exemplo       | [Descreva a funcionalidade]      |
-| ...    | ...            | ...                              |
-
-> Consulte a documentação completa dos endpoints em [docs/ENDPOINTS.md](docs/ENDPOINTS.md) (se aplicável).
-
-## Testes
-
-Para rodar os testes automatizados:
-
-```bash
-npm test
-```
+| ...    | ...      
 
 ## Contribuição
 
